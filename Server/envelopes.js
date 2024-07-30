@@ -8,8 +8,8 @@ const envelopes = {
   Food: {
     budget: 32,
   },
-}
+};
 
 module.exports = {
   envelopes,
-}
+};
