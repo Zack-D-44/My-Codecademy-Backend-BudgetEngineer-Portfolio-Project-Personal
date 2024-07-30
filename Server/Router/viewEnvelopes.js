@@ -13,6 +13,15 @@ viewEnvelopesRouter.get('/', (req, res, next) => {
 
 // Route for viewing specific envelope
 viewEnvelopesRouter.get('/:category', (req, res, next) => {
+    const envelopeCategory = envelopes[req.params.category];
+
+    if(envelopeCategory){
+        res.status(200).json(envelopeCategory);
+    }else{
+        res.status(404).send();
+    }
+
+
 
 });
 
