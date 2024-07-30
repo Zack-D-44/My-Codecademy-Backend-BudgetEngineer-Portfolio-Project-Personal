@@ -3,7 +3,7 @@
 const express = require('express');
 
 // import envelope js file
-const {envelops} = require('../envelops')
+const {envelopes} = require('../envelopes')
 
 const manageEnvelopeRouter = express.Router();
 

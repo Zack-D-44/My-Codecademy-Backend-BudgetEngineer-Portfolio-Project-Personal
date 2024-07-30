@@ -1,6 +1,6 @@
 // This is the js file that will contain different envelops
 
-const envelops = {
+const envelopes = {
     Rent: {
         budget: 0
     },
@@ -13,5 +13,5 @@ const envelops = {
 
 
 module.exports = {
-    envelops
+    envelopes
 }
