@@ -6,7 +6,7 @@ const envelops = {
     },
 
     Food: {
-        budget: 0        
+        budget: 32        
     }
 
 };
