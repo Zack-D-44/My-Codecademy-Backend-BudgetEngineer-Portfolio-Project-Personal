@@ -11,11 +11,11 @@ const manageEnvelopeRouter = express.Router();
 manageEnvelopeRouter.post('/create-envelope/:category', (req, res, next) => {
     const newCategory = req.params.category;
     // check if category already exists
-    if(envelops[newCategory]){
+    if(envelopes[newCategory]){
         console.log('Category already exists')
         res.status(400).json({Reason: 'Envelope already exists'});
     }else{
-        envelops[newCategory] = {
+        envelopes[newCategory] = {
             budget: 0
         }
 
@@ -30,7 +30,7 @@ manageEnvelopeRouter.delete('/delete-envelope/:category', (req, res, next) => {
     
     //if envelope in object delete it 
     if(envelops[categoryToDelete]){
-        delete envelops[categoryToDelete];
+        delete envelopes[categoryToDelete];
         res.status(200).json({Response: `${categoryToDelete} Envelope Deleted`});
     }else{
         // if not send user error code
