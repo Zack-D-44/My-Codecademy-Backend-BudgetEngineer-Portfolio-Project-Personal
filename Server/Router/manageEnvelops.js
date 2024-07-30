@@ -29,7 +29,7 @@ manageEnvelopeRouter.delete('/delete-envelope/:category', (req, res, next) => {
     const categoryToDelete = req.params.category;
     
     //if envelope in object delete it 
-    if(envelops[categoryToDelete]){
+    if(envelopes[categoryToDelete]){
         delete envelopes[categoryToDelete];
         res.status(200).json({Response: `${categoryToDelete} Envelope Deleted`});
     }else{
