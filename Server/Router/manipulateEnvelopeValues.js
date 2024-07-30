@@ -20,10 +20,11 @@ manipulateEnvelopeValueRouter.post(
       envelopes[categoryValue]['budget'] += valueToAddToEnvelope;
       res.json(envelopes[categoryValue]);
     } else {
+      // Respond with error and possible reason and current existing categories
       res.status(400).json({
         Reason:
           'Your value may not be a number or the category might not exist',
-        'Current categories': envelopes,
+        'All Existing Categories': Object.keys(envelopes),
       });
     }
   },
