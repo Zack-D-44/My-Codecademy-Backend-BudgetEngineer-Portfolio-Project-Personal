@@ -5,7 +5,7 @@ const { manageEnvelopeRouter } = require('./Router/manageEnvelops');
 const app = express();
 
 // Use manage Envelops router
-app.use('/manage-envelops', manageEnvelopeRouter);
+app.use('/manage-envelopes', manageEnvelopeRouter);
 
 
 // Start server

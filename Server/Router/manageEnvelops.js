@@ -25,7 +25,17 @@ manageEnvelopeRouter.post('/create-envelope/:category', (req, res, next) => {
 
 // Route for deleting envelope
 manageEnvelopeRouter.delete('/delete-envelope/:category', (req, res, next) => {
-
+    // category to delete
+    const categoryToDelete = req.params.category;
+    
+    //if envelope in object delete it 
+    if(envelops[categoryToDelete]){
+        delete envelops[categoryToDelete];
+        res.status(200).json({Response: `${categoryToDelete} Envelope Deleted`});
+    }else{
+        // if not send user error code
+        res.status(400).json({Reason: "Envelope provided was not an existing envelope"});
+    }
 });
 
 
