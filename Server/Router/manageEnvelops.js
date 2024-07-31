@@ -19,7 +19,7 @@ manageEnvelopeRouter.post('/create-envelope/:category', (req, res, next) => {
       budget: 0,
     };
 
-    res.status(201).send(envelops[newCategory]);
+    res.status(201).send(envelopes[newCategory]);
   }
 });
 

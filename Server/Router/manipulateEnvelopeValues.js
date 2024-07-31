@@ -39,6 +39,7 @@ manipulateEnvelopeValueRouter.post('/deduce-money/:category/:value', (req, res, 
   // if value is a number and category exists deduce value and send envelopes
   if (valueToDeduceFromEnvelope && categoryToAddValueInObj) {
     const newBudgetForCategory = envelopes[categoryValue]['budget'] - valueToDeduceFromEnvelope;
+    // if budget goes below zero throw error
     if (newBudgetForCategory < 0) {
       throw new Error(
         `Attempting to takeaway ${valueToDeduceFromEnvelope} made the categories budget go into the negative values, this is not possible`,
