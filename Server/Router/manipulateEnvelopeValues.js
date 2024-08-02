@@ -49,7 +49,7 @@ manipulateEnvelopeValueRouter.put('/deduce-money/:category/:value', (req, res, n
     }
 
     envelopes[req.params.category]['budget'] = newBudgetForCategory;
-    console.log(envelopes[req.params.category]);
+
     res.status(200).send(envelopes[req.params.category]);
   } else {
     // Respond with error and possible reason and current existing categories
