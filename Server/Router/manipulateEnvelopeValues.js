@@ -1,6 +1,7 @@
 // Require express
 const express = require('express');
 const { envelopes } = require('../envelopes');
+const e = require('express');
 
 // Create manipulate values router
 
@@ -11,7 +12,7 @@ const errorHandler = (err, req, res, next) => {
 };
 
 // Add Money to envelope route
-manipulateEnvelopeValueRouter.post('/add-money/:category/:value', (req, res, next) => {
+manipulateEnvelopeValueRouter.put('/add-money/:category/:value', (req, res, next) => {
   const categoryToAddValueInObj = envelopes[req.params.category];
   const valueToDeduceFromEnvelope = Number(req.params.value);
 
@@ -30,7 +31,7 @@ manipulateEnvelopeValueRouter.post('/add-money/:category/:value', (req, res, nex
   }
 });
 
-manipulateEnvelopeValueRouter.post('/deduce-money/:category/:value', (req, res, next) => {
+manipulateEnvelopeValueRouter.put('/deduce-money/:category/:value', (req, res, next) => {
   const categoryToAddValueInObj = envelopes[req.params.category];
   const valueToDeduceFromEnvelope = Number(req.params.value);
 
@@ -39,12 +40,17 @@ manipulateEnvelopeValueRouter.post('/deduce-money/:category/:value', (req, res, 
   // if value is a number and category exists deduce value and send envelopes
   if (valueToDeduceFromEnvelope && categoryToAddValueInObj) {
     const newBudgetForCategory = envelopes[categoryValue]['budget'] - valueToDeduceFromEnvelope;
+
     // if budget goes below zero throw error
     if (newBudgetForCategory < 0) {
       throw new Error(
         `Attempting to takeaway ${valueToDeduceFromEnvelope} made the categories budget go into the negative values, this is not possible`,
       );
     }
+
+    envelopes[req.params.category]['budget'] = newBudgetForCategory;
+    console.log(envelopes[req.params.category]);
+    res.status(200).send(envelopes[req.params.category]);
   } else {
     // Respond with error and possible reason and current existing categories
     res.status(400).json({
