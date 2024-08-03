@@ -60,4 +60,44 @@ manipulateEnvelopeValueRouter.put('/deduce-money/:category/:value', (req, res, n
   }
 });
 
+// post route for tranfering values from one envelope to another
+manipulateEnvelopeValueRouter.put(
+  '/transfer-money/:categoryfrom/:categoryto/:amount',
+  (req, res, next) => {
+    const categoryToTransferFrom = req.params.categoryfrom;
+    const categoryToTransferTo = req.params.categoryto;
+    let amountToTransfer = req.params.amount; //if amount == * we transfer all from
+
+    if (amountToTransfer !== '*' && typeof amountToTransfer !== 'number') {
+      amountToTransfer = Number(amountToTransfer);
+
+      // check if value will not be equal to a negative amount
+      if (envelopes[categoryToTransferFrom]['budget'] - amountToTransfer > 0) {
+        // transfer money accross
+        envelopes[categoryToTransferFrom]['budget'] -= amountToTransfer;
+        envelopes[categoryToTransferTo]['budget'] += amountToTransfer;
+
+        res.status(200).json({
+          envelopeFrom: envelopes[categoryToTransferFrom],
+          envelopeTo: envelopes[categoryToTransferTo],
+        });
+      } else {
+        // throw error if value would be negative
+        throw new Error('Insufficient category funds');
+      }
+    } else {
+      amountToTransfer = Number(amountToTransfer);
+
+      // transfer all funds over
+      envelopes[categoryToTransferTo]['budget'] += envelopes[categoryToTransferFrom]['budget'];
+      envelopes[categoryToTransferFrom]['budget'] -= envelopes[categoryToTransferFrom]['budget'];
+
+      res.status(200).send({
+        'Envelope from': envelopes[categoryToTransferFrom],
+        'Envelope To': envelopes[categoryToTransferTo],
+      });
+    }
+  },
+);
+// pick up here
 module.exports = manipulateEnvelopeValueRouter;
