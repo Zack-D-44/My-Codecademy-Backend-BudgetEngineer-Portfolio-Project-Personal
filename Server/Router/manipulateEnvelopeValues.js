@@ -93,8 +93,8 @@ manipulateEnvelopeValueRouter.put(
       envelopes[categoryToTransferFrom]['budget'] -= envelopes[categoryToTransferFrom]['budget'];
 
       res.status(200).send({
-        'Envelope from': envelopes[categoryToTransferFrom],
-        'Envelope To': envelopes[categoryToTransferTo],
+        'Envelope From Budget': envelopes[categoryToTransferFrom],
+        'Envelope To Budget': envelopes[categoryToTransferTo],
       });
     }
   },
