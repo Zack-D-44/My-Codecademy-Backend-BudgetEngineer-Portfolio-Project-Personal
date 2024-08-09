@@ -67,35 +67,35 @@ manipulateEnvelopeValueRouter.put(
     const categoryToTransferFrom = req.params.categoryfrom;
     const categoryToTransferTo = req.params.categoryto;
     let amountToTransfer = req.params.amount; //if amount == * we transfer all from
+    if (envelopes[categoryToTransferFrom] && envelopes[categoryToTransferTo]) {
+      if (amountToTransfer !== '*' && typeof amountToTransfer !== 'number') {
+        amountToTransfer = Number(amountToTransfer);
+        // check if value will not be equal to a negative amount
+        if (envelopes[categoryToTransferFrom]['budget'] - amountToTransfer > 0) {
+          // transfer money accross
+          envelopes[categoryToTransferFrom]['budget'] -= amountToTransfer;
+          envelopes[categoryToTransferTo]['budget'] += amountToTransfer;
 
-    if (amountToTransfer !== '*' && typeof amountToTransfer !== 'number') {
-      amountToTransfer = Number(amountToTransfer);
-
-      // check if value will not be equal to a negative amount
-      if (envelopes[categoryToTransferFrom]['budget'] - amountToTransfer > 0) {
-        // transfer money accross
-        envelopes[categoryToTransferFrom]['budget'] -= amountToTransfer;
-        envelopes[categoryToTransferTo]['budget'] += amountToTransfer;
-
-        res.status(200).json({
-          envelopeFrom: envelopes[categoryToTransferFrom],
-          envelopeTo: envelopes[categoryToTransferTo],
-        });
+          res.status(200).json({
+            envelopeFrom: envelopes[categoryToTransferFrom],
+            envelopeTo: envelopes[categoryToTransferTo],
+          });
+        } else {
+          // throw error if value would be negative
+          throw new Error('Insufficient category funds');
+        }
       } else {
-        // throw error if value would be negative
-        throw new Error('Insufficient category funds');
+        amountToTransfer = Number(amountToTransfer);
+
+        // transfer all funds over
+        envelopes[categoryToTransferTo]['budget'] += envelopes[categoryToTransferFrom]['budget'];
+        envelopes[categoryToTransferFrom]['budget'] -= envelopes[categoryToTransferFrom]['budget'];
+
+        res.status(200).send({
+          'Envelope From Budget': envelopes[categoryToTransferFrom],
+          'Envelope To Budget': envelopes[categoryToTransferTo],
+        });
       }
-    } else {
-      amountToTransfer = Number(amountToTransfer);
-
-      // transfer all funds over
-      envelopes[categoryToTransferTo]['budget'] += envelopes[categoryToTransferFrom]['budget'];
-      envelopes[categoryToTransferFrom]['budget'] -= envelopes[categoryToTransferFrom]['budget'];
-
-      res.status(200).send({
-        'Envelope From Budget': envelopes[categoryToTransferFrom],
-        'Envelope To Budget': envelopes[categoryToTransferTo],
-      });
     }
   },
 );
