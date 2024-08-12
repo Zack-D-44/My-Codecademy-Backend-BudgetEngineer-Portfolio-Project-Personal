@@ -36,3 +36,11 @@ To use the app:
 - Add funds to envelope: PUT `http://localhost:4000/manipulate-envelopes/add-money/CategoryName/AmountToAdd`
 - Take funds from envelope: PUT `http://localhost:4000/manipulate-envelopes/deduce-money/CategoryName/AmountToTake`
 - Transfer money from one envelope to another: PUT `http://localhost:4000/manipulate-envelopes/transfer-money/NameOfCategoryToTransferFrom/NameOfCategoryToTransferTo/AmountToTransfer`
+
+## Technologies Used
+
+- Node JS
+- JavaScript
+- Express.JS
+- REST API
+- Postman (For Testing)
