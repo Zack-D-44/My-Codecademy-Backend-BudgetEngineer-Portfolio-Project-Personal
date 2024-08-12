@@ -1,15 +1,15 @@
-# My-Codecademy-Backend-BudgetEngineer-Portfolio-Project-Personal
+# My Codecademy Backend Engineer Career Path Envelope Budgeting API
 
-This is the backend for a budgeting application that utilizes the effective envelope method. The API I created allows users to manage their finances by creating and deleting envelopes, adding or withdrawing money from envelopes, transferring funds between envelopes, and viewing the current balance of each envelope.
+This is the backend for a budgeting application that utilizes the effective envelope method. The API I created allows users to manage their finances by creating and deleting envelopes, adding or withdrawing funds from envelopes, transferring funds between envelopes, and viewing the current balance of each envelope.
 
 ## Features
 
 1. Envelope Management
    - Create and delete envelopes by specifying category.
 2. Fund Management
-   - Add or deduct money from envelopes, with checks to prevent negative balances.
+   - Add or deduct funds from envelopes, with checks in place to prevent negative balances.
 3. Fund Transfer
-   - Transfer money between envelopes, with the option to move all funds from one envelope to another.
+   - Transfer funds between envelopes, with the option to move all funds from one envelope to another.
 4. Envelope Viewing
    - View all envelopes and their balances, or retrieve the balance for a specific envelope.
 5. Error Handling
@@ -19,11 +19,11 @@ This is the backend for a budgeting application that utilizes the effective enve
 
 To use the app:
 
-- Clone the repository using the `git clone` command
-- Navigate to the cloned repository
-- Run the command `npm install` to download all required node packages
-- Start the server by running the command `node server.js`
-- Make calls to the API
+- Clone the repository using the `git clone` command in the terminal
+- Navigate to the cloned repository using the terminal
+- Run the command `npm install` in the terminal, to download all required node packages
+- Start the server by running the command `node server.js` in the terminal
+- Make calls to the API, for example by using Postman
 
 ## API Endpoints
 
