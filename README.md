@@ -27,12 +27,12 @@ To use the app:
 
 ## API Endpoints
 
-View all existing envelopes: GET http://localhost:4000/view-envelopes/
-View specific envelope: GET http://localhost:4000/view-envelopes/CategoryName
+- View all existing envelopes: GET http://localhost:4000/view-envelopes/
+- View specific envelope: GET http://localhost:4000/view-envelopes/CategoryName
 
-Create envelope: POST http://localhost:4000/manage-envelopes/create-envelope/CategoryName
-Delete envelope: DELETE http://localhost:4000/manage-envelopes/delete-envelope/CategoryName
+- Create envelope: POST http://localhost:4000/manage-envelopes/create-envelope/CategoryName
+- Delete envelope: DELETE http://localhost:4000/manage-envelopes/delete-envelope/CategoryName
 
-Add funds to envelope: PUT http://localhost:4000/manipulate-envelopes/add-money/CategoryName/Value
-Take funds from envelope: PUT http://localhost:4000/manipulate-envelopes/deduce-money/CategoryName/Value
-Transfer money from one envelope to another: PUT http://localhost:4000/manipulate-envelopes/transfer-money/NameOfCategoryToTransferFrom/NameOfCategoryToTransferTo/AmountToTransfer
+- Add funds to envelope: PUT http://localhost:4000/manipulate-envelopes/add-money/CategoryName/AmountToAdd
+- Take funds from envelope: PUT http://localhost:4000/manipulate-envelopes/deduce-money/CategoryName/AmountToTake
+- Transfer money from one envelope to another: PUT http://localhost:4000/manipulate-envelopes/transfer-money/NameOfCategoryToTransferFrom/NameOfCategoryToTransferTo/AmountToTransfer
