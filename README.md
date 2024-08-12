@@ -17,7 +17,13 @@ This is the backend for a budgeting application that utilizes the effective enve
 
 ## How To Use
 
-To use the app: - Clone the repository using the `git clone` command - Navigate to the cloned repository - Run the command `npm install` to download all required node packages - Start the server by running the command `node server.js` - Make calls to the API
+To use the app:
+
+- Clone the repository using the `git clone` command
+- Navigate to the cloned repository
+- Run the command `npm install` to download all required node packages
+- Start the server by running the command `node server.js`
+- Make calls to the API
 
 ## API Endpoints
 
